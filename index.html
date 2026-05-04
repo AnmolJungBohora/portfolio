@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gopal Jung Bohora — Video Editor & Digital Marketer</title>
+  <meta name="description" content="Gopal Jung Bohora — Professional Video Editor specializing in political campaigns, reels, and long-form content. Based in Kathmandu, Nepal.">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f0e8;
+      --cream: #e8e0d0;
+      --accent: #e8490a;
+      --accent2: #f0a500;
+      --gray: #2a2a2a;
+      --muted: #888;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      width: 12px; height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(232,73,10,0.5);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: all 0.15s ease;
+    }
+    body:hover .cursor { opacity: 1; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 4rem;
+      mix-blend-mode: normal;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: #c73d08; color: var(--white) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(232,73,10,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(240,165,0,0.05) 0%, transparent 50%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hero-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 12vw, 12rem);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      position: relative;
+    }
+
+    .hero-title .outline {
+      -webkit-text-stroke: 1px rgba(245,240,232,0.3);
+      color: transparent;
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 360px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .hero-desc em {
+      color: var(--white);
+      font-style: normal;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      padding: 1rem 2rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-decoration: none;
+      border: none;
+      cursor: none;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #c73d08; transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1px solid rgba(245,240,232,0.3);
+      color: var(--white);
+      padding: 1rem 2rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-decoration: none;
+      cursor: none;
+      transition: border-color 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
+
+    .scroll-line {
+      position: absolute;
+      right: 4rem;
+      bottom: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scroll-line span {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+    }
+    .scroll-line::after {
+      content: '';
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.3; transform: scaleY(0.6); }
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--gray);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* SECTION BASE */
+    section { padding: 7rem 4rem; }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 6rem);
+      line-height: 1;
+      margin-bottom: 4rem;
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--black);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-wrap::before {
+      content: '';
+      position: absolute;
+      top: -20px; left: -20px;
+      right: 20px; bottom: 20px;
+      border: 1px solid rgba(232,73,10,0.3);
+      z-index: 0;
+    }
+
+    .about-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      filter: grayscale(20%);
+      position: relative;
+      z-index: 1;
+      background: var(--gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--gray) 0%, #1a1a1a 100%);
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .about-tag {
+      position: absolute;
+      bottom: -1px;
+      right: -20px;
+      background: var(--accent);
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      z-index: 2;
+    }
+    .about-tag strong {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      display: block;
+      line-height: 1;
+    }
+    .about-tag span {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    .about-text p em {
+      color: var(--white);
+      font-style: normal;
+    }
+
+    .about-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .info-item label {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .info-item span {
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+
+    /* SERVICES */
+    #services {
+      background: #0f0f0f;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .service-card {
+      background: var(--black);
+      padding: 3rem 2.5rem;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width 0.4s ease;
+    }
+    .service-card:hover::before { width: 100%; }
+    .service-card:hover { background: #111; }
+
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: rgba(232,73,10,0.15);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* WORK / VIDEOS */
+    #work {
+      background: var(--black);
+    }
+
+    .work-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .work-intro p {
+      max-width: 400px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .video-card {
+      position: relative;
+    }
+
+    .video-label-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .video-type {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .video-duration {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .video-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #111;
+      overflow: hidden;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .play-btn {
+      width: 64px; height: 64px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .play-btn:hover { background: var(--accent); transform: scale(1.1); }
+
+    .play-btn::after {
+      content: '';
+      width: 0; height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 18px solid var(--accent);
+      margin-left: 4px;
+    }
+    .play-btn:hover::after { border-left-color: var(--white); }
+
+    .video-placeholder-text {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .video-title {
+      margin-top: 1rem;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+    }
+
+    .video-desc {
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* MARQUEE */
+    .marquee-section {
+      overflow: hidden;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: #0f0f0f;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      animation: marquee 20s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-item {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+      color: var(--muted);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .marquee-item .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* HIRE ME BANNER */
+    .hire-banner {
+      background: var(--accent);
+      padding: 5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hire-banner::before {
+      content: 'AVAILABLE';
+      font-family: var(--font-display);
+      font-size: 20vw;
+      color: rgba(0,0,0,0.08);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .hire-banner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .hire-banner p {
+      color: rgba(245,240,232,0.8);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+      position: relative;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--accent);
+      padding: 1rem 2.5rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s;
+      position: relative;
+    }
+    .btn-white:hover { transform: translateY(-3px); }
+
+    /* CONTACT */
+    #contact {
+      background: var(--black);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-info-list {
+      list-style: none;
+      margin-top: 2rem;
+    }
+
+    .contact-info-list li {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .contact-icon {
+      width: 44px; height: 44px;
+      border: 1px solid rgba(232,73,10,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    .contact-info-list label {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+    }
+
+    .contact-info-list a, .contact-info-list span {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: block;
+      margin-top: 0.2rem;
+      transition: color 0.3s;
+    }
+    .contact-info-list a:hover { color: var(--accent); }
+
+    /* WhatsApp button */
+    .whatsapp-btn {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #25D366;
+      color: white;
+      padding: 1.2rem 2rem;
+      text-decoration: none;
+      margin-top: 2rem;
+      transition: background 0.3s, transform 0.2s;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .whatsapp-btn:hover { background: #1da851; transform: translateY(-2px); }
+
+    .whatsapp-icon {
+      width: 28px; height: 28px;
+      fill: white;
+    }
+
+    /* Contact form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.9rem 1rem;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s;
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted); }
+
+    /* FOOTER */
+    footer {
+      background: #050505;
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+    .footer-logo span { color: var(--accent); }
+
+    .footer-social {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-social a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .footer-social a:hover { color: var(--accent); }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: none;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    /* MOBILE NAV */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--black);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 3px;
+      transition: color 0.3s;
+    }
+    .mobile-nav a:hover { color: var(--accent); }
+    .mobile-nav-close {
+      position: absolute;
+      top: 1.5rem; right: 4rem;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--muted);
+      cursor: none;
+      background: none;
+      border: none;
+    }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 5rem 2rem; }
+      .hero { padding: 0 2rem 4rem; }
+      .hero-title { font-size: clamp(4rem, 15vw, 7rem); }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 2rem; }
+      footer { padding: 2rem; flex-direction: column; text-align: center; }
+      .scroll-line { display: none; }
+      .hire-banner { padding: 4rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo"><span>G</span>JB</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileClose">✕</button>
+    <a href="#about" onclick="closeMobileNav()">About</a>
+    <a href="#services" onclick="closeMobileNav()">Services</a>
+    <a href="#work" onclick="closeMobileNav()">Work</a>
+    <a href="#contact" onclick="closeMobileNav()">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-label">Video Editor & Digital Marketer</div>
+    <h1 class="hero-title">
+      GOPAL<br>
+      <span class="outline">JUNG</span><br>
+      BOHORA
+    </h1>
+    <div class="hero-sub">
+      <p class="hero-desc">
+        Crafting <em>powerful visual stories</em> through video editing and digital marketing. Specializing in <em>political campaigns</em>, long-form content, and high-impact reels — based in Kathmandu, Nepal.
+      </p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="scroll-line"><span>Scroll</span></div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat fade-up">
+      <div class="stat-num">1+</div>
+      <div class="stat-label">Year Experience</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Videos Edited</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Clients Served</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num">70%</div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">Who I Am</div>
+    <div class="about-grid">
+      <div class="about-img-wrap fade-up">
+        <!-- Replace src with your actual photo: images/me.jpg -->
+        <img src="images/me.jpg" alt="My Photo" class="about-img">
+        <div class="about-tag">
+          <strong>1+</strong>
+          <span>Years in Video</span>
+        </div>
+      </div>
+      <div class="about-text fade-up">
+        <h2 class="section-title">About<br>Me</h2>
+        <p>I'm <em>Gopal Jung Bohora</em>, a passionate Video Editor and Digital Marketer based in <em>Kathmandu, Nepal</em>. Over the past year, I've been dedicated to creating compelling visual content that drives results.</p>
+        <p>My expertise lies in <em>political campaign videos</em> — where storytelling meets strategy. I craft both high-energy reels and detailed long-form content that captures attention and communicates powerful messages to the right audience.</p>
+        <p>Every edit I make is intentional. Every frame tells a story. If you need content that <em>stands out and converts</em>, I'm your editor.</p>
+        <div class="about-info">
+          <div class="info-item">
+            <label>Name</label>
+            <span>Gopal Jung Bohora</span>
+          </div>
+          <div class="info-item">
+            <label>Location</label>
+            <span>Kathmandu, Nepal</span>
+          </div>
+          <div class="info-item">
+            <label>Email</label>
+            <span>anmolbohora546@gmail.com</span>
+          </div>
+          <div class="info-item">
+            <label>Phone</label>
+            <span>+977 9813466266</span>
+          </div>
+          <div class="info-item">
+            <label>Specialty</label>
+            <span>Political Campaigns</span>
+          </div>
+          <div class="info-item">
+            <label>Status</label>
+            <span style="color: #4ade80;">Available for Work ✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">What I Do</div>
+    <h2 class="section-title fade-up">My<br>Services</h2>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-num">01</div>
+        <h3 class="service-title">Video Editing</h3>
+        <p class="service-desc">Professional editing for long-form content — documentaries, campaign videos, interviews, and event coverage that tell your story with precision and impact.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-num">02</div>
+        <h3 class="service-title">Reels & Short Videos</h3>
+        <p class="service-desc">High-energy, scroll-stopping reels for Instagram, Facebook, and TikTok. Fast cuts, trending sounds, and motion graphics that grab attention in the first second.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-num">03</div>
+        <h3 class="service-title">Political Campaigns</h3>
+        <p class="service-desc">Strategic video content for political campaigns — from rally coverage to promotional ads. I understand how to craft messaging that connects with voters and builds trust.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-num">04</div>
+        <h3 class="service-title">Digital Marketing</h3>
+        <p class="service-desc">End-to-end content strategy for your social media presence. From planning to execution — I help brands and campaigns grow their digital footprint.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-num">05</div>
+        <h3 class="service-title">Motion Graphics</h3>
+        <p class="service-desc">Eye-catching lower thirds, text animations, transitions, and title cards that add a professional polish to any video production.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-num">06</div>
+        <h3 class="service-title">Color Grading</h3>
+        <p class="service-desc">Professional color correction and grading that sets the mood, ensures consistency, and gives your footage a cinematic, broadcast-quality look.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-item">Video Editing <span class="dot"></span></div>
+      <div class="marquee-item">Political Campaigns <span class="dot"></span></div>
+      <div class="marquee-item">Reels & Short Videos <span class="dot"></span></div>
+      <div class="marquee-item">Digital Marketing <span class="dot"></span></div>
+      <div class="marquee-item">Color Grading <span class="dot"></span></div>
+      <div class="marquee-item">Motion Graphics <span class="dot"></span></div>
+      <div class="marquee-item">Video Editing <span class="dot"></span></div>
+      <div class="marquee-item">Political Campaigns <span class="dot"></span></div>
+      <div class="marquee-item">Reels & Short Videos <span class="dot"></span></div>
+      <div class="marquee-item">Digital Marketing <span class="dot"></span></div>
+      <div class="marquee-item">Color Grading <span class="dot"></span></div>
+      <div class="marquee-item">Motion Graphics <span class="dot"></span></div>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="work-intro">
+      <div>
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title" style="margin-bottom:0;">My<br>Work</h2>
+      </div>
+      <p>Here's a glimpse of my video editing work — a short reel and a long-form video that showcase the range and quality of my craft.</p>
+    </div>
+    <div class="video-grid">
+
+      <!-- VIDEO 1: REEL -->
+      <div class="video-card fade-up">
+        <div class="video-label-top">
+          <span class="video-type">Short Reel</span>
+          <span class="video-duration">~30 sec</span>
+        </div>
+        <div class="video-embed">
+          <!--
+            TO ADD YOUR REEL:
+            Replace the placeholder below with an iframe like:
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+            OR for Facebook video:
+            <iframe src="https://www.facebook.com/plugins/video.php?href=YOUR_FB_VIDEO_URL" allowfullscreen></iframe>
+          -->
+          <div class="video-embed">
+  <iframe 
+    src="https://www.youtube.com/embed/xCqmgmgVA14"
+    class="work-video"
+    allowfullscreen>
+  </iframe>
+</div>
+        </div>
+        <h3 class="video-title">Reel</h3>
+        <p class="video-desc">High-energy short reel crafted for maximum engagement and reach</p>
+      </div>
+
+      <!-- VIDEO 2: LONG FORM -->
+      <div class="video-card fade-up">
+        <div class="video-label-top">
+          <span class="video-type">Long Form</span>
+          <span class="video-duration">2–3 min</span>
+        </div>
+        <div class="video-embed">
+          <!--
+            TO ADD YOUR LONG VIDEO:
+            Replace the placeholder below with an iframe like:
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+          -->
+          <div class="video-embed">
+  <iframe 
+    src="https://www.youtube.com/embed/HWneeNLkn7o"
+    class="work-video"
+    allowfullscreen>
+  </iframe>
+</div>
+        </div>
+        <h3 class="video-title">Documentary</h3>
+        <p class="video-desc">Long-form content that builds narrative and connects with audiences</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HIRE ME BANNER -->
+  <div class="hire-banner">
+    <h2>Let's Work Together</h2>
+    <p>Looking for a dedicated video editor for your next campaign or project? I'm available and ready to create something remarkable.</p>
+    <a href="https://wa.me/9779813466266" target="_blank" class="btn-white">Message Me on WhatsApp</a>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Get In Touch</div>
+    <div class="contact-grid">
+      <div class="fade-up">
+        <h2 class="section-title">Contact<br>Me</h2>
+        <p style="color:var(--muted); line-height:1.8; margin-bottom:0.5rem;">Have a project in mind? Let's talk. The fastest way to reach me is via WhatsApp — I typically respond within a few hours.</p>
+        <ul class="contact-info-list">
+          <li>
+            <div class="contact-icon">📍</div>
+            <div>
+              <label>Location</label>
+              <span>Kathmandu, Nepal</span>
+            </div>
+          </li>
+          <li>
+            <div class="contact-icon">📧</div>
+            <div>
+              <label>Email</label>
+              <a href="mailto:anmolbohora546@gmail.com">anmolbohora546@gmail.com</a>
+            </div>
+          </li>
+          <li>
+            <div class="contact-icon">📞</div>
+            <div>
+              <label>Phone</label>
+              <a href="tel:+9779813466266">+977 9813466266</a>
+            </div>
+          </li>
+        </ul>
+        <a href="https://wa.me/9779813466266" target="_blank" class="whatsapp-btn">
+          <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          Chat on WhatsApp — +977 9813466266
+        </a>
+      </div>
+
+      <div class="fade-up">
+        <p style="font-size:0.75rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:2rem;">Or send a message</p>
+        <div class="contact-form">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="e.g. Ram Sharma">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>Project Type</label>
+            <input type="text" placeholder="e.g. Political Campaign Video">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="5" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="btn-primary" style="border:none; width:100%; text-align:center; font-size:0.85rem; letter-spacing:1px; cursor:none;">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-logo"><span>G</span>JB</a>
+    <ul class="footer-social">
+      <li><a href="https://www.facebook.com/junge.anmol/" target="_blank">Facebook</a></li>
+      <li><a href="https://www.instagram.com/anmolbohora/" target="_blank">Instagram</a></li>
+      <li><a href="https://www.linkedin.com/in/gopaljungbohora/" target="_blank">LinkedIn</a></li>
+    </ul>
+    <p class="footer-copy">&copy; <span id="year"></span> Gopal Jung Bohora. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      setTimeout(() => {
+        ring.style.left = e.clientX + 'px';
+        ring.style.top = e.clientY + 'px';
+      }, 80);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileClose = document.getElementById('mobileClose');
+    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+    // Scroll fade-up
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
