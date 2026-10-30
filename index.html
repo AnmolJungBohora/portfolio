@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gopal Jung Bohora — Video Editor & Digital Marketer</title>
-  <meta name="description" content="Gopal Jung Bohora — Professional Video Editor specializing in political campaigns, reels, and long-form content. Based in Kathmandu, Nepal.">
+  <meta name="description" content="Gopal Jung Bohora — Real Estate Video Editor and Digital Marketer. Short-form reels, Instagram content, and long-form videos. Based in Kathmandu, Nepal.">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --black: #0a0a0a;
-      --white: #f5f0e8;
+      --white: #f5f5f5;
       --cream: #e8e0d0;
-      --accent: #e8490a;
-      --accent2: #f0a500;
-      --gray: #2a2a2a;
-      --muted: #888;
+      --accent: #5eead4;
+      --accent2: #f9c784;
+      --gray: #1a1a1a;
+      --muted: #a3a3a3;
       --font-display: 'Bebas Neue', sans-serif;
       --font-body: 'DM Sans', sans-serif;
     }
@@ -45,7 +45,7 @@
     }
     .cursor-ring {
       width: 36px; height: 36px;
-      border: 1px solid rgba(232,73,10,0.5);
+      border: 1px solid rgba(94,234,212,0.5);
       border-radius: 50%;
       position: fixed;
       pointer-events: none;
@@ -94,11 +94,11 @@
 
     .nav-cta {
       background: var(--accent);
-      color: var(--white) !important;
+      color: #0b1514 !important;
       padding: 0.5rem 1.2rem;
       border-radius: 2px;
     }
-    .nav-cta:hover { background: #c73d08; color: var(--white) !important; }
+    .nav-cta:hover { background: #2dd4bf; color: #0b1514 !important; }
 
     /* HERO */
     .hero {
@@ -106,7 +106,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 0 4rem 5rem;
+      padding: 7rem 4rem 5rem;
       position: relative;
       overflow: hidden;
     }
@@ -114,9 +114,9 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: 
-        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(232,73,10,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(240,165,0,0.05) 0%, transparent 50%);
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(94,234,212,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(249,199,132,0.05) 0%, transparent 50%);
     }
 
     .hero-grid {
@@ -188,7 +188,7 @@
 
     .btn-primary {
       background: var(--accent);
-      color: var(--white);
+      color: #0b1514;
       padding: 1rem 2rem;
       font-family: var(--font-body);
       font-size: 0.85rem;
@@ -199,7 +199,7 @@
       transition: background 0.3s, transform 0.2s;
       display: inline-block;
     }
-    .btn-primary:hover { background: #c73d08; transform: translateY(-2px); }
+    .btn-primary:hover { background: #2dd4bf; color: #0b1514; transform: translateY(-2px); }
 
     .btn-outline {
       border: 1px solid rgba(245,240,232,0.3);
@@ -356,7 +356,7 @@
       bottom: -1px;
       right: -20px;
       background: var(--accent);
-      color: var(--white);
+      color: #0b1514;
       padding: 1rem 1.5rem;
       z-index: 2;
     }
@@ -439,7 +439,7 @@
     .service-num {
       font-family: var(--font-display);
       font-size: 4rem;
-      color: rgba(232,73,10,0.15);
+      color: rgba(94,234,212,0.15);
       line-height: 1;
       margin-bottom: 1.5rem;
     }
@@ -638,15 +638,11 @@
     }
 
     .hire-banner h2 {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 5rem);
-      color: var(--white);
-      margin-bottom: 1rem;
-      position: relative;
+      color: #0b1514;
     }
 
     .hire-banner p {
-      color: rgba(245,240,232,0.8);
+      color: #0b1514;
       max-width: 500px;
       margin: 0 auto 2rem;
       line-height: 1.8;
@@ -654,7 +650,7 @@
     }
 
     .btn-white {
-      background: var(--white);
+      background: #0b1514;
       color: var(--accent);
       padding: 1rem 2.5rem;
       font-family: var(--font-body);
@@ -901,6 +897,138 @@
       .scroll-line { display: none; }
       .hire-banner { padding: 4rem 2rem; }
     }
+    /* HERO SHOWREEL CARD */
+.hero-visual {
+  position: absolute;
+  right: 7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(620px, 44vw);
+  z-index: 2;
+}
+.reel-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(94,234,212,0.25);
+  background: linear-gradient(135deg, #1b2127, #0e1215);
+  box-shadow: 0 30px 90px rgba(94,234,212,0.14);
+  text-decoration: none;
+  cursor: none;
+  animation: floatY 6s ease-in-out infinite;
+}
+.reel-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 35%, rgba(94,234,212,0.14) 50%, transparent 65%);
+  transform: translateX(-100%);
+  animation: shine 4s ease-in-out infinite;
+}
+.reel-tag {
+  position: absolute;
+  top: 1.2rem; left: 1.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--accent);
+  animation: blink 1.4s infinite;
+}
+.reel-play {
+  position: absolute;
+  top: 44%; left: 50%;
+  width: 96px; height: 96px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulseRing 2s infinite;
+}
+.reel-play::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-35%, -50%);
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 24px solid #0b1514;
+}
+.wave {
+  position: absolute;
+  left: 1.5rem; right: 1.5rem; bottom: 3.2rem;
+  height: 46px;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+.wave i {
+  flex: 1;
+  height: 100%;
+  background: var(--accent);
+  opacity: 0.7;
+  border-radius: 2px;
+  transform-origin: bottom;
+  animation: wave 1.2s ease-in-out infinite;
+}
+.wave i:nth-child(3n)   { animation-delay: -0.3s; }
+.wave i:nth-child(3n+1) { animation-delay: -0.6s; }
+.wave i:nth-child(4n)   { animation-delay: -0.9s; }
+.reel-text {
+  position: absolute;
+  left: 1.5rem; bottom: 1.1rem;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.chip {
+  position: absolute;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: rgba(17,21,25,0.85);
+  border: 1px solid rgba(94,234,212,0.35);
+  border-radius: 999px;
+  animation: floatY 5s ease-in-out infinite;
+}
+.chip1 { top: -20px;  right: -26px; animation-delay: -1s; }
+.chip2 { bottom: 70px; left: -40px; animation-delay: -2.5s; }
+.chip3 { bottom: -20px; right: 40px; animation-delay: -4s; }
+
+@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes shine { 0% { transform: translateX(-100%); } 60%,100% { transform: translateX(100%); } }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0 rgba(94,234,212,0.5); }
+  70%  { box-shadow: 0 0 0 30px rgba(94,234,212,0); }
+  100% { box-shadow: 0 0 0 0 rgba(94,234,212,0); }
+}
+@keyframes wave { 0%,100% { transform: scaleY(0.2); } 50% { transform: scaleY(1); } }
+
+@media (max-width: 900px) {
+  .hero-visual { position: relative; right: auto; top: auto; transform: none; width: 100%; margin: 2rem 0 0.5rem; }
+}
+/* WORK LAYOUT */
+.video-grid {
+  grid-template-columns: 1fr 280px 280px;
+  align-items: start;
+}
+.video-tall { padding-bottom: 177.78%; }
+.video-wide .video-embed {
+  padding-bottom: 0;
+  height: 498px;
+}
+
+@media (max-width: 1100px) {
+  .video-grid { grid-template-columns: 1fr 1fr; }
+  .video-wide { grid-column: 1 / -1; }
+  .video-wide .video-embed { height: auto; padding-bottom: 56.25%; }
+}
+@media (max-width: 700px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
   </style>
 </head>
 <body>
@@ -942,14 +1070,25 @@
       <span class="outline">JUNG</span><br>
       BOHORA
     </h1>
+    <div class="hero-visual">
+  <a href="#work" class="reel-card">
+    <span class="reel-tag">● REC</span>
+    <span class="reel-play"></span>
+    <div class="wave">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <span class="reel-text">Watch my work</span>
+  </a>
+  <span class="chip chip1">Real Estate</span>
+  <span class="chip chip2">Reels</span>
+  <span class="chip chip3">Instagram</span>
+</div>
     <div class="hero-sub">
-      <p class="hero-desc">
-        Crafting <em>powerful visual stories</em> through video editing and digital marketing. Specializing in <em>political campaigns</em>, long-form content, and high-impact reels — based in Kathmandu, Nepal.
-      </p>
-      <div class="hero-actions">
-        <a href="#work" class="btn-primary">View My Work</a>
-        <a href="#contact" class="btn-outline">Get in Touch</a>
-      </div>
+     <p class="hero-desc">
+  I edit <em>Real estate videos</em> and <em>Instagram content</em> that grab attention and bring in leads. Short reels, long-form edits, and digital marketing — based in Kathmandu, Nepal.
+</p>
+     
     </div>
     <div class="scroll-line"><span>Scroll</span></div>
   </section>
@@ -957,11 +1096,11 @@
   <!-- STATS BAR -->
   <div class="stats-bar">
     <div class="stat fade-up">
-      <div class="stat-num">1+</div>
+      <div class="stat-num">3+</div>
       <div class="stat-label">Year Experience</div>
     </div>
     <div class="stat fade-up">
-      <div class="stat-num">200+</div>
+      <div class="stat-num">500+</div>
       <div class="stat-label">Videos Edited</div>
     </div>
     <div class="stat fade-up">
@@ -969,7 +1108,7 @@
       <div class="stat-label">Clients Served</div>
     </div>
     <div class="stat fade-up">
-      <div class="stat-num">70%</div>
+      <div class="stat-num">83%</div>
       <div class="stat-label">Client Satisfaction</div>
     </div>
   </div>
@@ -982,15 +1121,15 @@
         <!-- Replace src with your actual photo: images/me.jpg -->
         <img src="images/me.jpg" alt="My Photo" class="about-img">
         <div class="about-tag">
-          <strong>1+</strong>
+          <strong>3+</strong>
           <span>Years in Video</span>
         </div>
       </div>
       <div class="about-text fade-up">
         <h2 class="section-title">About<br>Me</h2>
-        <p>I'm <em>Gopal Jung Bohora</em>, a passionate Video Editor and Digital Marketer based in <em>Kathmandu, Nepal</em>. Over the past year, I've been dedicated to creating compelling visual content that drives results.</p>
-        <p>My expertise lies in <em>political campaign videos</em> — where storytelling meets strategy. I craft both high-energy reels and detailed long-form content that captures attention and communicates powerful messages to the right audience.</p>
-        <p>Every edit I make is intentional. Every frame tells a story. If you need content that <em>stands out and converts</em>, I'm your editor.</p>
+        <p>I'm <em>Gopal Jung Bohora</em>, a passionate Video Editor and Digital Marketer based in <em>Kathmandu, Nepal</em>. For the past three years, I've been creating compelling visual content that drives results.</p>
+<p>My expertise lies in <em>Real estate videos</em> — where great visuals meet strategy. I edit high-energy reels and detailed long-form content that show off a property and catch the attention of the right buyers.</p>
+<p>I also create <em>Instagram content</em> for other clients and brands. Every edit I make is intentional. Every frame tells a story. If you need content that <em>stands out and converts</em>, I'm your editor.</p>
         <div class="about-info">
           <div class="info-item">
             <label>Name</label>
@@ -1033,13 +1172,13 @@
       </div>
       <div class="service-card fade-up">
         <div class="service-num">02</div>
-        <h3 class="service-title">Reels & Short Videos</h3>
+        <h3 class="service-title">Reels & Long Videos</h3>
         <p class="service-desc">High-energy, scroll-stopping reels for Instagram, Facebook, and TikTok. Fast cuts, trending sounds, and motion graphics that grab attention in the first second.</p>
       </div>
       <div class="service-card fade-up">
         <div class="service-num">03</div>
-        <h3 class="service-title">Political Campaigns</h3>
-        <p class="service-desc">Strategic video content for political campaigns — from rally coverage to promotional ads. I understand how to craft messaging that connects with voters and builds trust.</p>
+        <h3 class="service-title">Real Estate Videos</h3>
+<p class="service-desc">Property tours, walkthroughs, and reels that make listings stand out. I edit video that shows a property at its best and brings in the right buyers and clients.</p>
       </div>
       <div class="service-card fade-up">
         <div class="service-num">04</div>
@@ -1063,14 +1202,14 @@
   <div class="marquee-section">
     <div class="marquee-track">
       <div class="marquee-item">Video Editing <span class="dot"></span></div>
-      <div class="marquee-item">Political Campaigns <span class="dot"></span></div>
-      <div class="marquee-item">Reels & Short Videos <span class="dot"></span></div>
+      <div class="marquee-item">Real Estate Videos <span class="dot"></span></div>
+      <div class="marquee-item">Reels & Long Videos <span class="dot"></span></div>
       <div class="marquee-item">Digital Marketing <span class="dot"></span></div>
       <div class="marquee-item">Color Grading <span class="dot"></span></div>
       <div class="marquee-item">Motion Graphics <span class="dot"></span></div>
       <div class="marquee-item">Video Editing <span class="dot"></span></div>
-      <div class="marquee-item">Political Campaigns <span class="dot"></span></div>
-      <div class="marquee-item">Reels & Short Videos <span class="dot"></span></div>
+      <div class="marquee-item">Real Estate Videos <span class="dot"></span></div>
+      <div class="marquee-item">Reels & Long Videos <span class="dot"></span></div>
       <div class="marquee-item">Digital Marketing <span class="dot"></span></div>
       <div class="marquee-item">Color Grading <span class="dot"></span></div>
       <div class="marquee-item">Motion Graphics <span class="dot"></span></div>
@@ -1088,54 +1227,46 @@
     </div>
     <div class="video-grid">
 
-      <!-- VIDEO 1: REEL -->
-      <!-- VIDEO 1: REEL -->
-<div class="video-card fade-up">
-
+  <!-- LONG FORM -->
+  <div class="video-card video-wide fade-up">
     <div class="video-label-top">
-        <span class="video-type">Short Reel</span>
-        <span class="video-duration">~30 sec</span>
+      <span class="video-type">Long Form</span>
+      <span class="video-duration">2–3 min</span>
     </div>
-
     <div class="video-embed">
-        <iframe
-    src="https://www.youtube.com/embed/wyYQ1h7_rVo"
-    class="work-video"
-    allowfullscreen>
-</iframe>
+      <iframe src="https://www.youtube.com/embed/HWneeNLkn7o" allowfullscreen></iframe>
     </div>
+    <h3 class="video-title">Documentary</h3>
+    <p class="video-desc">Long-form content that builds narrative and connects with audiences</p>
+  </div>
 
+  <!-- REEL 1 -->
+  <div class="video-card fade-up">
+    <div class="video-label-top">
+      <span class="video-type">Short Reel</span>
+      <span class="video-duration">~30 sec</span>
+    </div>
+    <div class="video-embed video-tall">
+      <iframe src="https://www.youtube.com/embed/wyYQ1h7_rVo" allowfullscreen></iframe>
+    </div>
     <h3 class="video-title">Reel</h3>
-    <p class="video-desc">
-        High-energy short reel crafted for maximum engagement and reach
-    </p>
+    <p class="video-desc">High-energy short reel for maximum reach</p>
+  </div>
+
+  <!-- REEL 2 (new) -->
+  <div class="video-card fade-up">
+    <div class="video-label-top">
+      <span class="video-type">Short Reel</span>
+      <span class="video-duration">~30 sec</span>
+    </div>
+    <div class="video-embed video-tall">
+      <iframe src="https://www.youtube.com/embed/tuKxMm09mDI" allowfullscreen></iframe>
+    </div>
+    <h3 class="video-title">Real Estate Reel</h3>
+    <p class="video-desc">Short-form property content built to grab attention</p>
+  </div>
 
 </div>
-
-      <!-- VIDEO 2: LONG FORM -->
-      <div class="video-card fade-up">
-        <div class="video-label-top">
-          <span class="video-type">Long Form</span>
-          <span class="video-duration">2–3 min</span>
-        </div>
-        <div class="video-embed">
-          <!--
-            TO ADD YOUR LONG VIDEO:
-            Replace the placeholder below with an iframe like:
-            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
-          -->
-          <div class="video-embed">
-  <iframe 
-    src="https://www.youtube.com/embed/HWneeNLkn7o"
-    class="work-video"
-    allowfullscreen>
-  </iframe>
-</div>
-        </div>
-        <h3 class="video-title">Documentary</h3>
-        <p class="video-desc">Long-form content that builds narrative and connects with audiences</p>
-      </div>
-
     </div>
   </section>
 
